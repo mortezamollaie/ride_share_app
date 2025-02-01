@@ -27,7 +27,12 @@ class LoginController extends Controller
 
         // send a user a one time use code
         $LoginCode = rand(111111,999999);
+        $user->login_code = $LoginCode;
+        $user->save();
 
         // return back a response
+        return response()->json([
+            'message' => 'Text message notification sent.'
+        ]);
     }
 }
