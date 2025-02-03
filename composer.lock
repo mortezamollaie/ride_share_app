@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b1ec825819ae064391a8f4489d4a446",
+    "content-hash": "c06d45337ab4eb84542a41a0eb0e5af6",
     "packages": [
         {
             "name": "brick/math",
@@ -1961,6 +1961,51 @@
                 }
             ],
             "time": "2024-09-21T08:32:55+00:00"
+        },
+        {
+            "name": "medianasms/php-rest-sdk",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/medianasms/php-rest-sdk.git",
+                "reference": "4d4d68985b6c06fb8add2aa9666e60759083ebc6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/medianasms/php-rest-sdk/zipball/4d4d68985b6c06fb8add2aa9666e60759083ebc6",
+                "reference": "4d4d68985b6c06fb8add2aa9666e60759083ebc6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Medianasms\\": "src/Medianasms/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Asghar Dadashzadeh",
+                    "email": "dev@medianasms.com"
+                }
+            ],
+            "description": "Medianasms REST API client",
+            "homepage": "https://github.com/medianasms/php-rest-sdk",
+            "support": {
+                "issues": "https://github.com/medianasms/php-rest-sdk/issues",
+                "source": "https://github.com/medianasms/php-rest-sdk/tree/v1.1.0"
+            },
+            "time": "2020-02-12T06:16:21+00:00"
         },
         {
             "name": "monolog/monolog",

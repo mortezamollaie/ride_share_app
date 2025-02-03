@@ -10,7 +10,8 @@
         "laravel-notification-channels/twilio": "^3.4",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "medianasms/php-rest-sdk": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
