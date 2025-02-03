@@ -11,6 +11,8 @@ class UserInfo extends Controller
      */
     public function __invoke(Request $request): \Illuminate\Http\JsonResponse
     {
-        return response()->json($request->user());
+        return response()->json([
+            $request->user()
+        ]);
     }
 }
