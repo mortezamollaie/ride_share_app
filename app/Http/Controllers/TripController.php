@@ -50,4 +50,39 @@ class TripController extends Controller
             'message' => 'can not find this trip'
         ], 404);
     }
+
+    public function accept(Request $request, Trip $trip)
+    {
+        // a driver accept a trip
+
+        $request->validate([
+           'driver_location' => 'required'
+        ]);
+
+        $trip->update([
+           'driver_id' => $request->user()->id,
+           'driver_location' => $request->driver_location,
+        ]);
+
+        $trip->load('driver.user');
+
+        return response()->json([
+            $trip
+        ]);
+    }
+
+    public function start(Request $request, Trip $trip)
+    {
+        // a driver has started taking a passenger to their destination
+    }
+
+    public function end(Request $request, Trip $trip)
+    {
+        // a driver has ended the trip
+    }
+
+    public function location(Request $request, Trip $trip)
+    {
+        // update the driver's current location
+    }
 }
