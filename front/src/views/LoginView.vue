@@ -5,7 +5,7 @@
             <div class="overflow-hidden shadow sm:rounded-md max-w-sm mx-auto text-left">
                 <div class="bg-white px-4 py05 sm:p-6">
                     <div>
-                        <input type="text" name="phone" id="phone" placeholder="09123456789" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
+                        <input type="text" v-maska="'#### ### ####'" name="phone" id="phone" placeholder="09123456789" class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
                     </div>
                 </div>
                 <div class="bg-gray-100 px-4 py-3 text-right sm:px-6">
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-
+import { vMaska } from "maska/vue"
 </script>
 
 <style>
