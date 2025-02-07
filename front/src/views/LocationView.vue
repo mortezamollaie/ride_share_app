@@ -13,7 +13,8 @@
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                    <button 
+                    <button
+                         
                         type="button" 
                         class="inline-flex justify-center rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2">
                         Find A Ride
@@ -25,5 +26,23 @@
 </template>
 
 <script setup>
+import { useLocationStore } from '@/stores/location'
+
+const location = useLocationStore()
+
+const handleLocationChanged = (e) => {
+    console.log('handleLocationChanged', e)
+    location.$patch({
+        destination: {
+            name: e.name,
+            address: e.formatted_address,
+            geometry: {
+                lat: e.geometry.location.lat(),
+                lng: e.geometry.location.lng(),
+            }
+        }
+    })
+
+}
 
 </script>
