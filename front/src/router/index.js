@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
 import LandingView from '@/views/LandingView.vue'
-
+import LocationView from '@/views/LocationView.vue'
 import axios from 'axios'
 
 const router = createRouter({
@@ -17,7 +17,12 @@ const router = createRouter({
       path: '/landing',
       name: 'landing',
       component: LandingView,
-    }
+    },
+    {
+      path: '/location',
+      name: 'location',
+      component: LocationView,
+    },
   ],
 })
 
