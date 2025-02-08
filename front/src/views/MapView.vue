@@ -5,7 +5,8 @@
             <div class="overflow-hidden shadow sm:rounded-md max-w-sm mx-auto text-left">
                 <div class="bg-white px-4 py-5 sm:p-6">
                     <div>
-                        <GMapMap :zoom="11" :center="locationStore.destination.geometry" style="width: 100%; height: 256px;">
+                        <GMapMap :zoom="11" :center="locationStore.destination.geometry"
+                         ref="gMap" style="width: 100%; height: 256px;">
                             
                         </GMapMap>
                     </div>
@@ -27,8 +28,46 @@
 <script setup>
 import { useLocationStore } from '@/stores/location';
 import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
+import { ref } from 'vue';
 
 const locationStore = useLocationStore();
 const router = useRouter();
+const gMap = ref(null);
+
+onMounted(async() => {
+    // does the user have a location set?
+    if(!locationStore.destination.name) {
+        router.push({name: 'location'});
+    }
+
+    // lets go the users current location
+    await locationStore.updateCurrentLocation();
+
+    // draw a path on the map
+    gMap.value.$mapPromise.then((mapObject)=>{
+        let currentPoint = new google.maps.LatLng(locationStore.current.geometry);
+        let destinationPoint = new google.maps.LatLng(locationStore.destination.geometry);
+        let directionsService = new google.maps.DirectionsService();
+        let directionsDisplay = new google.maps.DirectionsRenderer({
+            map: mapObject,
+        });
+
+        directionsService.route({
+            origin: currentPoint,
+            destination: destinationPoint,
+            avoidTolls: false,
+            avoidHighways: false,
+            travelMode: google.maps.TravelMode.DRIVING,
+        }, (result, status) => {
+            if(status === google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(result);
+            } else {
+                console.log(result, status);
+            }
+        })
+    })
+})
+
 
 </script>
