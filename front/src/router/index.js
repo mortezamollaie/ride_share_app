@@ -6,6 +6,8 @@ import LocationView from '@/views/LocationView.vue'
 import MapView from '@/views/MapView.vue'
 import axios from 'axios'
 import TripView from '@/views/TripView.vue'
+import DriverView from '@/views/DriverView.vue'
+import StandbyView from '@/views/StandbyView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +36,16 @@ const router = createRouter({
       path: '/trip',
       name: 'trip',
       component: TripView
+    },
+    {
+      path: '/standby',
+      name: 'standby',
+      component: StandbyView
+    },
+    {
+      path: '/driver',
+      name: 'driver',
+      component: DriverView
     }
   ],
 })
