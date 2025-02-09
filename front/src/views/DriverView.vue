@@ -1,37 +1,37 @@
 <template>
     <div class="pt-16">
         <h1 class="text-3xl font-semibold mb-4">Driver and car details</h1>
-        <form action="#">
+        <form action="#" @submit.prevent="handleSaveDriver">
             <div class="overflow-hidden shadow sm:rounded-md max-w-sm mx-auto text-left">
                 <div class="bg-white px-4 py-5 sm:p-6">
                     <div>
-                        <input type="text" name="name" id="name" placeholder="Full Name"
+                        <input type="text" name="name" id="name" v-model="driverDetails.name" placeholder="Full Name"
                             class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
                     </div>
                     <div class="mt-2">
-                        <input type="number" name="year" id="year" placeholder="Car Year"
+                        <input type="number" name="year" id="year" v-model="driverDetails.year" placeholder="Car Year"
                             class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
                     </div>
                     <div class="mt-2">
-                        <input type="text" name="make" id="make" placeholder="Make"
+                        <input type="text" name="make" id="make" v-model="driverDetails.make" placeholder="Make"
                             class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
                     </div>
                     <div class="mt-2">
-                        <input type="text" name="model" id="model" placeholder="Model"
+                        <input type="text" name="model" id="model" v-model="driverDetails.model" placeholder="Model"
                             class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
                     </div>
                     <div class="mt-2">
-                        <input type="text" name="color" id="color" placeholder="Color"
+                        <input type="text" name="color" id="color" v-model="driverDetails.color" placeholder="Color"
                             class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
                     </div>
                     <div class="mt-2">
-                        <input type="text" name="license_plate" id="license_plate"
+                        <input type="text" name="license_plate" id="license_plate" v-model="driverDetails.license_plate"
                             placeholder="License Plate #"
                             class="mt-1 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50">
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                    <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2">
+                    <button type="submit" @click.prevent="handleSaveDriver" class="inline-flex justify-center rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2">
                         Continue
                     </button>
                 </div>
@@ -40,6 +40,29 @@
     </div>
 </template>
 
-<script>
+<script setup>
+import http from '@/helpers/http';
+import { reactive } from 'vue';
+import router from '@/router';
 
+const driverDetails = reactive({
+    name: '',
+    year: null,
+    make: '',
+    model: '',
+    color: '',
+    license_plate: '',
+})
+
+const handleSaveDriver = () => {
+    http().post('/api/driver', driverDetails)
+        .then((response) => {
+            router.push({
+                name: 'standby'
+            })
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+}
 </script>
