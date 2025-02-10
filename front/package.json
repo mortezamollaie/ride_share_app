@@ -17,7 +17,9 @@
     "@fawmi/vue-google-maps": "^0.9.79",
     "@vitejs/plugin-vue": "^5.2.1",
     "axios": "^1.7.9",
+    "laravel-echo": "^1.19.0",
     "maska": "^3.1.0",
+    "pusher-js": "^8.4.0",
     "vite": "^6.0.11",
     "vite-plugin-vue-devtools": "^7.7.0"
   }
