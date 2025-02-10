@@ -30,13 +30,13 @@ const router = useRouter()
 const handleStartDriving = () => {
     http().get('/api/driver')
     .then((response) => {
-        if(response.data.diver){
+        if(response.data[0].driver){
             router.push({
                 name: 'location'
             })
         } else {
             router.push({
-                name: 'driver'
+                name: 'standby'
             })
         }
     })
