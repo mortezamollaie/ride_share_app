@@ -31,12 +31,13 @@ const handleStartDriving = () => {
     http().get('/api/driver')
     .then((response) => {
         if(response.data[0].driver){
+            console.log('****')
             router.push({
-                name: 'location'
+                name: 'standby'
             })
         } else {
             router.push({
-                name: 'standby'
+                name: 'driver'
             })
         }
     })
